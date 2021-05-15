@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>post</title>
+  <style>
+     #title, #author, #content{
+       border: rgb(70, 140, 253) 2px solid;
+     }
+     a{
+       margin: 10px;
+     }
+     #edit{
+       padding: 6px 18px;
+     }
+     #date{
+       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      
+     }
+     .date{
+       align-items: right;      
+       display: inline-block;
+       margin-left: 55%;
+       min-width: 800px;
+       overflow-x: hidden;
+       line-height: -40px;     
+     }
+     .buttons{
+       text-align: right;
+     }
+    #contents{
+      padding-left: 20px;
+    }
+    #title_{
+      color: gray;
+    }
+    #heading{
+      text-align: center;
+    }
+    
+  </style>
+{% endblock %}
+     
+        
+
+{% block body %} 
+            <br>
+            <h1 id="heading">post</h1>
+            <br>
+            
+            <form action="/posts" method="POST">
+                <hr>
+                <h2>create new blog post:</h2>
+                <label for="title">Title:</label>
+                <input class="form-control" type="text" name="title" id="title" placeholder="enter Title" aria-label="enter Title" /><br>
+                <label for="author">Author:</label>
+                <input class="form-control" type="text" name="author" id="author" placeholder="enter author name" aria-label="enter author name" /><br>                
+                <label for="content">Posts:</label>
+                <textarea class="form-control" type="text" name="content" id="content" placeholder="write the stuff.." rows="3" aria-label="enter content"></textarea>
+                <br>
+                  <input class="btn btn-outline-success" type="submit" value="post">
+                 
+                <hr>
+            </form>
+            
+
+
+            </form>
+            {% for post in posts %}
+                <h1 id="title_">{{ post.title }}</h1>                
+                {% if post.author %}
+                 <div class="date"> <small id="date">Written by {{ post.author}} on {{ post.date_posted }}</small></div>  
+                {% else %}
+                <small>Written by unknown on {{ post.date_posted }}</small>
+                {% endif %}
+                <p id="contents" style="white-space: pre-wrap">{{ post.content }}</p>
+                <div class="buttons">
+                  <a class="btn btn-danger" href="/posts/delete/{{ post.id }}">Delete</a>
+                  <a id="edit" class="btn btn-primary" href="/posts/edit/{{ post.id }}">Edit</a>
+                <hr>
+                </div>
+                
+            {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block head %}
+<title>home</title>
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  #heading {
+    text-align: center;
+  }
+
+  .button_of_main {
+    text-align: center;
+  }
+ #main_button{
+   padding: 10px;
+ }
+</style>
+{% endblock%} {% block body %}
+<br />
+<h1>home page</h1>
+<br />
+<div>
+  <div class="bg-light p-5 rounded">
+    <div class="col-sm-8 mx-auto">
+      <h1 id="heading">Welcome to blogger!!!</h1>
+      <br />
+      <h3>
+        Here is the bloging site, you can blog our content and many cool stuffs
+        <br /><br />
+        visit my
+        <a href="https://www.instagram.com/sainathmurugan/" target="_blank">insta page</a>
+        and click the follow button
+      </h3>
+      <p>here go click the below button to explore more</p>
+      <div class="button_of_main">
+        <p>
+          <a id="main_button" class="btn btn-primary" href="/posts" role="button">create post &raquo;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

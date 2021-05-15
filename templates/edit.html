@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>edit post</title>
+  <style>
+    #title, #content, #author{
+      border: 2px rgb(26, 166, 246) solid;
+    }
+  </style>
+{% endblock %}
+     
+{% block body %} 
+            <br>
+            <h1> edit the post</h1>
+            <br>
+            <hr>
+            <form action="/posts/edit/{{ post.id }}" method="POST">
+                
+                <label for="title">Title</label>
+                <input class="form-control" type="text" name="title" id="title" value="{{ post.title }}" aria-label="enter Title" /><br>
+                <label for="author">Author</label>
+                <input class="form-control" type="text" name="author" id="author" value="{{ post.author}}" aria-label="enter author name" /><br>                
+                <label for="content">Posts</label>
+                <textarea class="form-control" type="text" name="content" id="content" rows="3" aria-label="enter content">{{ post.content }}</textarea>
+                <br>
+                  <input class="btn btn-outline-success" type="submit" value="save">
+                <hr>
+            </form>
+{% endblock %}      
