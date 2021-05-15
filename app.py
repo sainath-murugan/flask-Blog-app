@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from decouple import config
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "DATABASE_URL"
+app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_URL")
 db = SQLAlchemy(app)
 
 class BlogPost(db.Model):
